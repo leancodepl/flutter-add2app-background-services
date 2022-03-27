@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_module/background_service/start_background_service.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -10,7 +11,7 @@ void main() {
 void backgroundServiceMain() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  startBackgroundService();
 }
 
 @pragma('vm:entry-point')

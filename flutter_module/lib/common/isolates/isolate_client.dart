@@ -3,7 +3,7 @@ import 'dart:ui';
 
 import 'package:flutter/foundation.dart';
 
-abstract class IsolateClient {
+abstract class IsolateClient<T> {
   IsolateClient(this._isolateName);
 
   final String _isolateName;
@@ -12,5 +12,5 @@ abstract class IsolateClient {
   SendPort? get sendPort => IsolateNameServer.lookupPortByName(_isolateName);
 
   @protected
-  void send(dynamic message) => sendPort?.send(message);
+  void send(T message) => sendPort?.send(message);
 }
