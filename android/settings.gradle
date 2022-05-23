@@ -1,10 +1,18 @@
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
+        maven {
+            url "https://storage.googleapis.com/download.flutter.io"
+        }
         jcenter() // Warning: this repository is going to shut down soon
     }
 }
 rootProject.name = "Add2AppBackgroundService"
 include ':app'
+setBinding(new Binding([gradle: this]))                                
+evaluate(new File(                                                     
+  settingsDir.parentFile,                                              
+  'flutter_module/.android/include_flutter.groovy'
+))
