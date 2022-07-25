@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_module/background_service/start_background_service.dart';
+import 'package:flutter_module/src/background_service/start_background_service.dart';
+import 'package:flutter_module/src/dialog/dialog_isolate.dart';
+import 'package:flutter_module/src/dialog/dialog_page.dart';
+import 'package:flutter_module/src/main/main_isolate.dart';
+import 'package:flutter_module/src/main/main_page.dart';
+
+final theme = ThemeData(
+  primarySwatch: Colors.indigo,
+);
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
+  final mainHost = MainIsolateHost.register();
+
+  final app = MaterialApp(
+    title: 'Flutter Demo',
+    theme: theme,
+    home: const MainPage(),
+  );
+
+  runApp(app);
 }
 
 @pragma('vm:entry-point')
@@ -18,29 +34,13 @@ void backgroundServiceMain() {
 void dialogMain() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  runApp(const MyApp());
-}
+  final dialogHost = DialogIsolateHost.register();
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final app = MaterialApp(
+    title: 'Flutter Dialog',
+    theme: theme,
+    home: const DialogPage(),
+  );
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox();
-  }
+  runApp(app);
 }

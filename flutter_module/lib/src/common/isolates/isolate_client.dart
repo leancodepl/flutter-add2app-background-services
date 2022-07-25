@@ -11,6 +11,5 @@ abstract class IsolateClient<T> {
   @protected
   SendPort? get sendPort => IsolateNameServer.lookupPortByName(_isolateName);
 
-  @protected
   void send(T message) => sendPort?.send(message);
 }

@@ -19,6 +19,8 @@ abstract class IsolateHost<T> {
   late StreamSubscription<dynamic> _portSubscription;
   final StreamController<T> _eventsController = StreamController.broadcast();
 
+  Stream<T> get events => _eventsController.stream;
+
   @protected
   void emit(T event) {
     _eventsController.add(event);

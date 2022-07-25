@@ -29,6 +29,35 @@ class DialogData {
   }
 }
 
+class ComputationNotification {
+  ComputationNotification({
+    required this.title,
+    required this.message,
+    required this.percentProgress,
+  });
+
+  String title;
+  String message;
+  int percentProgress;
+
+  Object encode() {
+    final Map<Object?, Object?> pigeonMap = <Object?, Object?>{};
+    pigeonMap['title'] = title;
+    pigeonMap['message'] = message;
+    pigeonMap['percentProgress'] = percentProgress;
+    return pigeonMap;
+  }
+
+  static ComputationNotification decode(Object message) {
+    final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
+    return ComputationNotification(
+      title: pigeonMap['title']! as String,
+      message: pigeonMap['message']! as String,
+      percentProgress: pigeonMap['percentProgress']! as int,
+    );
+  }
+}
+
 class _FlutterMainApiCodec extends StandardMessageCodec {
   const _FlutterMainApiCodec();
 }
@@ -41,6 +70,27 @@ abstract class FlutterMainApi {
 
 class _NativeMainApiCodec extends StandardMessageCodec {
   const _NativeMainApiCodec();
+  @override
+  void writeValue(WriteBuffer buffer, Object? value) {
+    if (value is ComputationNotification) {
+      buffer.putUint8(128);
+      writeValue(buffer, value.encode());
+    } else 
+{
+      super.writeValue(buffer, value);
+    }
+  }
+  @override
+  Object? readValueOfType(int type, ReadBuffer buffer) {
+    switch (type) {
+      case 128:       
+        return ComputationNotification.decode(readValue(buffer)!);
+      
+      default:      
+        return super.readValueOfType(type, buffer);
+      
+    }
+  }
 }
 
 class NativeMainApi {
@@ -53,11 +103,11 @@ class NativeMainApi {
 
   static const MessageCodec<Object?> codec = _NativeMainApiCodec();
 
-  Future<void> startService() async {
+  Future<void> startService(ComputationNotification arg_notification) async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.NativeMainApi.startService', codec, binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
-        await channel.send(null) as Map<Object?, Object?>?;
+        await channel.send(<Object?>[arg_notification]) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',
@@ -139,8 +189,12 @@ class _NativeBackgroundServiceApiCodec extends StandardMessageCodec {
   const _NativeBackgroundServiceApiCodec();
   @override
   void writeValue(WriteBuffer buffer, Object? value) {
-    if (value is DialogData) {
+    if (value is ComputationNotification) {
       buffer.putUint8(128);
+      writeValue(buffer, value.encode());
+    } else 
+    if (value is DialogData) {
+      buffer.putUint8(129);
       writeValue(buffer, value.encode());
     } else 
 {
@@ -151,6 +205,9 @@ class _NativeBackgroundServiceApiCodec extends StandardMessageCodec {
   Object? readValueOfType(int type, ReadBuffer buffer) {
     switch (type) {
       case 128:       
+        return ComputationNotification.decode(readValue(buffer)!);
+      
+      case 129:       
         return DialogData.decode(readValue(buffer)!);
       
       default:      
@@ -197,6 +254,28 @@ class NativeBackgroundServiceApi {
         'dev.flutter.pigeon.NativeBackgroundServiceApi.openDialog', codec, binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
         await channel.send(<Object?>[arg_data]) as Map<Object?, Object?>?;
+    if (replyMap == null) {
+      throw PlatformException(
+        code: 'channel-error',
+        message: 'Unable to establish connection on channel.',
+      );
+    } else if (replyMap['error'] != null) {
+      final Map<Object?, Object?> error = (replyMap['error'] as Map<Object?, Object?>?)!;
+      throw PlatformException(
+        code: (error['code'] as String?)!,
+        message: error['message'] as String?,
+        details: error['details'],
+      );
+    } else {
+      return;
+    }
+  }
+
+  Future<void> updateNotification(ComputationNotification arg_notification) async {
+    final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
+        'dev.flutter.pigeon.NativeBackgroundServiceApi.updateNotification', codec, binaryMessenger: _binaryMessenger);
+    final Map<Object?, Object?>? replyMap =
+        await channel.send(<Object?>[arg_notification]) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',

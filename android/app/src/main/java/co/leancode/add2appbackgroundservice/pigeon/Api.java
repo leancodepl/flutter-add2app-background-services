@@ -54,6 +54,80 @@ public class Api {
       return pigeonResult;
     }
   }
+
+  /** Generated class from Pigeon that represents data sent in messages. */
+  public static class ComputationNotification {
+    private @NonNull String title;
+    public @NonNull String getTitle() { return title; }
+    public void setTitle(@NonNull String setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"title\" is null.");
+      }
+      this.title = setterArg;
+    }
+
+    private @NonNull String message;
+    public @NonNull String getMessage() { return message; }
+    public void setMessage(@NonNull String setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"message\" is null.");
+      }
+      this.message = setterArg;
+    }
+
+    private @NonNull Long percentProgress;
+    public @NonNull Long getPercentProgress() { return percentProgress; }
+    public void setPercentProgress(@NonNull Long setterArg) {
+      if (setterArg == null) {
+        throw new IllegalStateException("Nonnull field \"percentProgress\" is null.");
+      }
+      this.percentProgress = setterArg;
+    }
+
+    /** Constructor is private to enforce null safety; use Builder. */
+    private ComputationNotification() {}
+    public static final class Builder {
+      private @Nullable String title;
+      public @NonNull Builder setTitle(@NonNull String setterArg) {
+        this.title = setterArg;
+        return this;
+      }
+      private @Nullable String message;
+      public @NonNull Builder setMessage(@NonNull String setterArg) {
+        this.message = setterArg;
+        return this;
+      }
+      private @Nullable Long percentProgress;
+      public @NonNull Builder setPercentProgress(@NonNull Long setterArg) {
+        this.percentProgress = setterArg;
+        return this;
+      }
+      public @NonNull ComputationNotification build() {
+        ComputationNotification pigeonReturn = new ComputationNotification();
+        pigeonReturn.setTitle(title);
+        pigeonReturn.setMessage(message);
+        pigeonReturn.setPercentProgress(percentProgress);
+        return pigeonReturn;
+      }
+    }
+    @NonNull Map<String, Object> toMap() {
+      Map<String, Object> toMapResult = new HashMap<>();
+      toMapResult.put("title", title);
+      toMapResult.put("message", message);
+      toMapResult.put("percentProgress", percentProgress);
+      return toMapResult;
+    }
+    static @NonNull ComputationNotification fromMap(@NonNull Map<String, Object> map) {
+      ComputationNotification pigeonResult = new ComputationNotification();
+      Object title = map.get("title");
+      pigeonResult.setTitle((String)title);
+      Object message = map.get("message");
+      pigeonResult.setMessage((String)message);
+      Object percentProgress = map.get("percentProgress");
+      pigeonResult.setPercentProgress((percentProgress == null) ? null : ((percentProgress instanceof Integer) ? (Integer)percentProgress : (Long)percentProgress));
+      return pigeonResult;
+    }
+  }
   private static class FlutterMainApiCodec extends StandardMessageCodec {
     public static final FlutterMainApiCodec INSTANCE = new FlutterMainApiCodec();
     private FlutterMainApiCodec() {}
@@ -76,11 +150,32 @@ public class Api {
   private static class NativeMainApiCodec extends StandardMessageCodec {
     public static final NativeMainApiCodec INSTANCE = new NativeMainApiCodec();
     private NativeMainApiCodec() {}
+    @Override
+    protected Object readValueOfType(byte type, ByteBuffer buffer) {
+      switch (type) {
+        case (byte)128:         
+          return ComputationNotification.fromMap((Map<String, Object>) readValue(buffer));
+        
+        default:        
+          return super.readValueOfType(type, buffer);
+        
+      }
+    }
+    @Override
+    protected void writeValue(ByteArrayOutputStream stream, Object value)     {
+      if (value instanceof ComputationNotification) {
+        stream.write(128);
+        writeValue(stream, ((ComputationNotification) value).toMap());
+      } else 
+{
+        super.writeValue(stream, value);
+      }
+    }
   }
 
   /** Generated interface from Pigeon that represents a handler of messages from Flutter.*/
   public interface NativeMainApi {
-    void startService();
+    void startService(@NonNull ComputationNotification notification);
     void stopService();
 
     /** The codec used by NativeMainApi. */
@@ -97,7 +192,12 @@ public class Api {
           channel.setMessageHandler((message, reply) -> {
             Map<String, Object> wrapped = new HashMap<>();
             try {
-              api.startService();
+              ArrayList<Object> args = (ArrayList<Object>)message;
+              ComputationNotification notificationArg = (ComputationNotification)args.get(0);
+              if (notificationArg == null) {
+                throw new NullPointerException("notificationArg unexpectedly null.");
+              }
+              api.startService(notificationArg);
               wrapped.put("result", null);
             }
             catch (Error | RuntimeException exception) {
@@ -174,6 +274,9 @@ public class Api {
     protected Object readValueOfType(byte type, ByteBuffer buffer) {
       switch (type) {
         case (byte)128:         
+          return ComputationNotification.fromMap((Map<String, Object>) readValue(buffer));
+        
+        case (byte)129:         
           return DialogData.fromMap((Map<String, Object>) readValue(buffer));
         
         default:        
@@ -183,8 +286,12 @@ public class Api {
     }
     @Override
     protected void writeValue(ByteArrayOutputStream stream, Object value)     {
-      if (value instanceof DialogData) {
+      if (value instanceof ComputationNotification) {
         stream.write(128);
+        writeValue(stream, ((ComputationNotification) value).toMap());
+      } else 
+      if (value instanceof DialogData) {
+        stream.write(129);
         writeValue(stream, ((DialogData) value).toMap());
       } else 
 {
@@ -197,6 +304,7 @@ public class Api {
   public interface NativeBackgroundServiceApi {
     void stopService();
     void openDialog(@NonNull DialogData data);
+    void updateNotification(@NonNull ComputationNotification notification);
 
     /** The codec used by NativeBackgroundServiceApi. */
     static MessageCodec<Object> getCodec() {
@@ -237,6 +345,30 @@ public class Api {
                 throw new NullPointerException("dataArg unexpectedly null.");
               }
               api.openDialog(dataArg);
+              wrapped.put("result", null);
+            }
+            catch (Error | RuntimeException exception) {
+              wrapped.put("error", wrapError(exception));
+            }
+            reply.reply(wrapped);
+          });
+        } else {
+          channel.setMessageHandler(null);
+        }
+      }
+      {
+        BasicMessageChannel<Object> channel =
+            new BasicMessageChannel<>(binaryMessenger, "dev.flutter.pigeon.NativeBackgroundServiceApi.updateNotification", getCodec());
+        if (api != null) {
+          channel.setMessageHandler((message, reply) -> {
+            Map<String, Object> wrapped = new HashMap<>();
+            try {
+              ArrayList<Object> args = (ArrayList<Object>)message;
+              ComputationNotification notificationArg = (ComputationNotification)args.get(0);
+              if (notificationArg == null) {
+                throw new NullPointerException("notificationArg unexpectedly null.");
+              }
+              api.updateNotification(notificationArg);
               wrapped.put("result", null);
             }
             catch (Error | RuntimeException exception) {

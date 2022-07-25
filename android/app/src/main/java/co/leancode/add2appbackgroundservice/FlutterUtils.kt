@@ -3,16 +3,21 @@ package co.leancode.add2appbackgroundservice
 import android.content.Context
 import android.util.Log
 import android.view.ViewGroup
+import android.widget.FrameLayout
 import android.widget.LinearLayout
+import androidx.fragment.app.FragmentManager
+import io.flutter.embedding.android.FlutterFragment
+import io.flutter.embedding.android.RenderMode
+import io.flutter.embedding.android.TransparencyMode
 import io.flutter.embedding.engine.FlutterEngine
 import io.flutter.embedding.engine.FlutterEngineCache
 import io.flutter.embedding.engine.FlutterEngineGroup
 import io.flutter.embedding.engine.dart.DartExecutor
 
-enum class AppFlutterEngine(val id: String) {
-    main("MAIN"),
-    computationService("COMPUTATION_SERVICE"),
-    dialog("DIALOG")
+enum class AppFlutterEngine(val id: String, val entrypoint: String) {
+    main("MAIN", "main"),
+    computationService("COMPUTATION_SERVICE", "backgroundServiceMain"),
+    dialog("DIALOG", "dialogMain")
 }
 
 class FlutterUtils {
@@ -21,19 +26,20 @@ class FlutterUtils {
 
         private lateinit var engineGroup: FlutterEngineGroup
 
-        fun initialize(context: Context): FlutterEngine {
+        fun initialize(context: Context) {
             engineGroup = FlutterEngineGroup(context)
         }
 
         fun createOrGetEngine(
             context: Context,
             engine: AppFlutterEngine,
-            dartEntrypoint: DartExecutor.DartEntrypoint,
         ): FlutterEngine {
             var cachedEngine = FlutterEngineCache.getInstance().get(engine.id)
             if (cachedEngine == null) {
                 Log.d(LOG_TAG, "Engine ${engine.id} does not exist, creating engine")
-                cachedEngine = engineGroup.createAndRunEngine(context, dartEntrypoint)
+
+                val entrypoint = DartExecutor.DartEntrypoint("lib/main.dart", engine.entrypoint)
+                cachedEngine = engineGroup.createAndRunEngine(context, entrypoint)
                 FlutterEngineCache.getInstance().put(engine.id, cachedEngine)
             }
             return cachedEngine!!
@@ -60,6 +66,41 @@ class FlutterUtils {
             )
             view.orientation = LinearLayout.VERTICAL
             return view
+        }
+
+        fun attachFlutterFragment(
+            context: Context,
+            root: ViewGroup,
+            fragmentManager: FragmentManager,
+            fragmentTag: String,
+            flutterEngine: AppFlutterEngine,
+        ): FlutterFragment {
+            var flutterFragment = fragmentManager.findFragmentByTag(fragmentTag) as FlutterFragment?
+
+            if (flutterFragment == null) {
+                flutterFragment = FlutterFragment
+                    .withCachedEngine(flutterEngine.id)
+                    .shouldAttachEngineToActivity(true)
+                    .renderMode(RenderMode.surface)
+                    .transparencyMode(TransparencyMode.opaque)
+                    .build()
+
+                fragmentManager
+                    .beginTransaction()
+                    .add(R.id.flutter_fragment_id, flutterFragment, fragmentTag)
+                    .commit()
+            }
+
+            val flutterContainer = FrameLayout(context)
+            root.addView(flutterContainer)
+            flutterContainer.id = R.id.flutter_fragment_id
+            flutterContainer.layoutParams = LinearLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                1.0f
+            )
+
+            return flutterFragment
         }
     }
 }
