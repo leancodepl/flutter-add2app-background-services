@@ -23,39 +23,6 @@ import java.util.HashMap;
 public class Api {
 
   /** Generated class from Pigeon that represents data sent in messages. */
-  public static class DialogData {
-    private @Nullable String message;
-    public @Nullable String getMessage() { return message; }
-    public void setMessage(@Nullable String setterArg) {
-      this.message = setterArg;
-    }
-
-    public static final class Builder {
-      private @Nullable String message;
-      public @NonNull Builder setMessage(@Nullable String setterArg) {
-        this.message = setterArg;
-        return this;
-      }
-      public @NonNull DialogData build() {
-        DialogData pigeonReturn = new DialogData();
-        pigeonReturn.setMessage(message);
-        return pigeonReturn;
-      }
-    }
-    @NonNull Map<String, Object> toMap() {
-      Map<String, Object> toMapResult = new HashMap<>();
-      toMapResult.put("message", message);
-      return toMapResult;
-    }
-    static @NonNull DialogData fromMap(@NonNull Map<String, Object> map) {
-      DialogData pigeonResult = new DialogData();
-      Object message = map.get("message");
-      pigeonResult.setMessage((String)message);
-      return pigeonResult;
-    }
-  }
-
-  /** Generated class from Pigeon that represents data sent in messages. */
   public static class ComputationNotification {
     private @NonNull String title;
     public @NonNull String getTitle() { return title; }
@@ -276,9 +243,6 @@ public class Api {
         case (byte)128:         
           return ComputationNotification.fromMap((Map<String, Object>) readValue(buffer));
         
-        case (byte)129:         
-          return DialogData.fromMap((Map<String, Object>) readValue(buffer));
-        
         default:        
           return super.readValueOfType(type, buffer);
         
@@ -290,10 +254,6 @@ public class Api {
         stream.write(128);
         writeValue(stream, ((ComputationNotification) value).toMap());
       } else 
-      if (value instanceof DialogData) {
-        stream.write(129);
-        writeValue(stream, ((DialogData) value).toMap());
-      } else 
 {
         super.writeValue(stream, value);
       }
@@ -303,7 +263,7 @@ public class Api {
   /** Generated interface from Pigeon that represents a handler of messages from Flutter.*/
   public interface NativeBackgroundServiceApi {
     void stopService();
-    void openDialog(@NonNull DialogData data);
+    void openDialog();
     void updateNotification(@NonNull ComputationNotification notification);
 
     /** The codec used by NativeBackgroundServiceApi. */
@@ -339,12 +299,7 @@ public class Api {
           channel.setMessageHandler((message, reply) -> {
             Map<String, Object> wrapped = new HashMap<>();
             try {
-              ArrayList<Object> args = (ArrayList<Object>)message;
-              DialogData dataArg = (DialogData)args.get(0);
-              if (dataArg == null) {
-                throw new NullPointerException("dataArg unexpectedly null.");
-              }
-              api.openDialog(dataArg);
+              api.openDialog();
               wrapped.put("result", null);
             }
             catch (Error | RuntimeException exception) {

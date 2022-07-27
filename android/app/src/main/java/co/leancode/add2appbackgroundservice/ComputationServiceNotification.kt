@@ -23,7 +23,7 @@ class ComputationServiceNotification {
         private const val CHANNEL_ID = "ComputationServiceNotification"
         private const val NOTIFICATION_ID = 1
 
-        fun createNotificatioChannel(context: Context) {
+        fun createNotificationChannel(context: Context) {
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val channel1 = NotificationChannel(
                     CHANNEL_ID,

@@ -9,9 +9,9 @@ class ComputationServiceApiHandler(private val foregroundService: ComputationFor
         foregroundService.stopService()
     }
 
-    override fun openDialog(data: Api.DialogData) {
+    override fun openDialog() {
         val intent = Intent(foregroundService, FlutterDialogActivity::class.java)
-        val engine = FlutterUtils.createOrGetEngine(foregroundService, AppFlutterEngine.dialog)
+        intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK;
         foregroundService.startActivity(intent)
     }
 

@@ -27,7 +27,7 @@ class ComputationForegroundService : Service() {
 
         if (engine == null) {
             Log.d(LOG_TAG, "Initializing Flutter engine")
-            ComputationServiceNotification.createNotificatioChannel(applicationContext)
+            ComputationServiceNotification.createNotificationChannel(applicationContext)
             val notification = ComputationServiceNotification.createNotification(applicationContext, intent!!)
             startForeground(SERVICE_ID, notification)
             startDartService()

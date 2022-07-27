@@ -8,27 +8,6 @@ import 'dart:typed_data' show Uint8List, Int32List, Int64List, Float64List;
 import 'package:flutter/foundation.dart' show WriteBuffer, ReadBuffer;
 import 'package:flutter/services.dart';
 
-class DialogData {
-  DialogData({
-    this.message,
-  });
-
-  String? message;
-
-  Object encode() {
-    final Map<Object?, Object?> pigeonMap = <Object?, Object?>{};
-    pigeonMap['message'] = message;
-    return pigeonMap;
-  }
-
-  static DialogData decode(Object message) {
-    final Map<Object?, Object?> pigeonMap = message as Map<Object?, Object?>;
-    return DialogData(
-      message: pigeonMap['message'] as String?,
-    );
-  }
-}
-
 class ComputationNotification {
   ComputationNotification({
     required this.title,
@@ -193,10 +172,6 @@ class _NativeBackgroundServiceApiCodec extends StandardMessageCodec {
       buffer.putUint8(128);
       writeValue(buffer, value.encode());
     } else 
-    if (value is DialogData) {
-      buffer.putUint8(129);
-      writeValue(buffer, value.encode());
-    } else 
 {
       super.writeValue(buffer, value);
     }
@@ -206,9 +181,6 @@ class _NativeBackgroundServiceApiCodec extends StandardMessageCodec {
     switch (type) {
       case 128:       
         return ComputationNotification.decode(readValue(buffer)!);
-      
-      case 129:       
-        return DialogData.decode(readValue(buffer)!);
       
       default:      
         return super.readValueOfType(type, buffer);
@@ -249,11 +221,11 @@ class NativeBackgroundServiceApi {
     }
   }
 
-  Future<void> openDialog(DialogData arg_data) async {
+  Future<void> openDialog() async {
     final BasicMessageChannel<Object?> channel = BasicMessageChannel<Object?>(
         'dev.flutter.pigeon.NativeBackgroundServiceApi.openDialog', codec, binaryMessenger: _binaryMessenger);
     final Map<Object?, Object?>? replyMap =
-        await channel.send(<Object?>[arg_data]) as Map<Object?, Object?>?;
+        await channel.send(null) as Map<Object?, Object?>?;
     if (replyMap == null) {
       throw PlatformException(
         code: 'channel-error',

@@ -38,6 +38,7 @@ void startBackgroundService() {
 
     if (remainingTicks == 0) {
       timer.cancel();
+      nativeServiceApi.openDialog();
       backgroundServiceHost.dispose();
     }
   });

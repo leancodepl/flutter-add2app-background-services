@@ -17,12 +17,8 @@ abstract class NativeDialogApi {
 @HostApi()
 abstract class NativeBackgroundServiceApi {
   void stopService();
-  void openDialog(DialogData data);
+  void openDialog();
   void updateNotification(ComputationNotification notification);
-}
-
-class DialogData {
-  late final String? message;
 }
 
 class ComputationNotification {
