@@ -17,7 +17,7 @@ void main() {
   final app = MaterialApp(
     title: 'Flutter Demo',
     theme: theme,
-    home: const MainPage(),
+    home: MainPage(mainIsolateHost: mainHost),
   );
 
   runApp(app);

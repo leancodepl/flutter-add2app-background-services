@@ -24,14 +24,18 @@ void startBackgroundService() {
 
   const allTicks = 20;
   var remainingTicks = 20;
+
   Timer.periodic(const Duration(seconds: 1), (timer) {
     print('Timer tick $remainingTicks');
+
+    remainingTicks--;
+
     mainClient.send(
       MainComputationStatusMessage(
         progress: (allTicks - remainingTicks) / allTicks,
       ),
     );
-    remainingTicks--;
+
     if (remainingTicks == 0) {
       timer.cancel();
       backgroundServiceHost.dispose();
