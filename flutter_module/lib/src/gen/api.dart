@@ -37,16 +37,6 @@ class ComputationNotification {
   }
 }
 
-class _FlutterMainApiCodec extends StandardMessageCodec {
-  const _FlutterMainApiCodec();
-}
-abstract class FlutterMainApi {
-  static const MessageCodec<Object?> codec = _FlutterMainApiCodec();
-
-  static void setup(FlutterMainApi? api, {BinaryMessenger? binaryMessenger}) {
-  }
-}
-
 class _NativeMainApiCodec extends StandardMessageCodec {
   const _NativeMainApiCodec();
   @override

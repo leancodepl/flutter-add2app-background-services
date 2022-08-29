@@ -95,25 +95,6 @@ public class Api {
       return pigeonResult;
     }
   }
-  private static class FlutterMainApiCodec extends StandardMessageCodec {
-    public static final FlutterMainApiCodec INSTANCE = new FlutterMainApiCodec();
-    private FlutterMainApiCodec() {}
-  }
-
-  /** Generated class from Pigeon that represents Flutter messages that can be called from Java.*/
-  public static class FlutterMainApi {
-    private final BinaryMessenger binaryMessenger;
-    public FlutterMainApi(BinaryMessenger argBinaryMessenger){
-      this.binaryMessenger = argBinaryMessenger;
-    }
-    public interface Reply<T> {
-      void reply(T reply);
-    }
-    static MessageCodec<Object> getCodec() {
-      return FlutterMainApiCodec.INSTANCE;
-    }
-
-  }
   private static class NativeMainApiCodec extends StandardMessageCodec {
     public static final NativeMainApiCodec INSTANCE = new NativeMainApiCodec();
     private NativeMainApiCodec() {}
