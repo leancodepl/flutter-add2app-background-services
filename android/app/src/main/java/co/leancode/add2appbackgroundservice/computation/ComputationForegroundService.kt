@@ -1,14 +1,14 @@
-package co.leancode.add2appbackgroundservice
+package co.leancode.add2appbackgroundservice.computation
 
 import android.app.Service
 import android.content.Intent
 import android.os.Binder
-import android.os.CountDownTimer
 import android.os.IBinder
 import android.util.Log
+import co.leancode.add2appbackgroundservice.AppFlutterEngine
+import co.leancode.add2appbackgroundservice.FlutterUtils
 import co.leancode.add2appbackgroundservice.pigeon.Api
 import io.flutter.embedding.engine.FlutterEngine
-import io.flutter.embedding.engine.dart.DartExecutor
 
 class ComputationForegroundService : Service() {
     companion object {
@@ -28,7 +28,8 @@ class ComputationForegroundService : Service() {
         if (engine == null) {
             Log.d(LOG_TAG, "Initializing Flutter engine")
             ComputationServiceNotification.createNotificationChannel(applicationContext)
-            val notification = ComputationServiceNotification.createNotification(applicationContext, intent!!)
+            val notification =
+                ComputationServiceNotification.createNotification(applicationContext, intent!!)
             startForeground(SERVICE_ID, notification)
             startDartService()
         }

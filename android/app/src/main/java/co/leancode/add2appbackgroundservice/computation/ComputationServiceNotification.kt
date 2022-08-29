@@ -1,4 +1,4 @@
-package co.leancode.add2appbackgroundservice
+package co.leancode.add2appbackgroundservice.computation
 
 import android.app.Notification
 import android.app.NotificationChannel
@@ -10,7 +10,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.ContextCompat.getSystemService
+import co.leancode.add2appbackgroundservice.MainActivity
 import co.leancode.add2appbackgroundservice.pigeon.Api
 
 

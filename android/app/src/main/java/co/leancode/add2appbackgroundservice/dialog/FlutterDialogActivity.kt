@@ -1,8 +1,9 @@
-package co.leancode.add2appbackgroundservice
+package co.leancode.add2appbackgroundservice.dialog
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import co.leancode.add2appbackgroundservice.AppFlutterEngine
+import co.leancode.add2appbackgroundservice.FlutterUtils
 import co.leancode.add2appbackgroundservice.pigeon.Api
 import io.flutter.embedding.android.FlutterFragment
 import io.flutter.embedding.engine.FlutterEngine
@@ -26,7 +27,7 @@ class FlutterDialogActivity : AppCompatActivity() {
             this,
             root,
             supportFragmentManager,
-            FlutterDialogActivity.FLUTTER_FRAGMENT_TAG,
+            FLUTTER_FRAGMENT_TAG,
             AppFlutterEngine.dialog
         )
     }

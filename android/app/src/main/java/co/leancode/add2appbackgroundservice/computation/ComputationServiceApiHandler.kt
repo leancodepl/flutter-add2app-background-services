@@ -1,8 +1,8 @@
-package co.leancode.add2appbackgroundservice
+package co.leancode.add2appbackgroundservice.computation
 
 import android.content.Intent
+import co.leancode.add2appbackgroundservice.dialog.FlutterDialogActivity
 import co.leancode.add2appbackgroundservice.pigeon.Api
-import io.flutter.embedding.engine.FlutterEngine
 
 class ComputationServiceApiHandler(private val foregroundService: ComputationForegroundService) : Api.NativeBackgroundServiceApi {
     override fun stopService() {

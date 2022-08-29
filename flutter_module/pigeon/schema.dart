@@ -1,8 +1,5 @@
 import 'package:pigeon/pigeon.dart';
 
-@FlutterApi()
-abstract class FlutterMainApi {}
-
 @HostApi()
 abstract class NativeMainApi {
   void startService(ComputationNotification notification);

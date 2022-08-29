@@ -20,7 +20,7 @@
             android:windowSoftInputMode="adjustResize"
         />
         <activity
-            android:name=".FlutterDialogActivity"
+            android:name=".dialog.FlutterDialogActivity"
             android:theme="@style/Theme.Add2AppBackgroundService.NoActionBar"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
             android:hardwareAccelerated="true"
@@ -39,7 +39,7 @@
         </activity>
 
         <service
-            android:name=".ComputationForegroundService"
+            android:name=".computation.ComputationForegroundService"
             android:exported="false" />
     </application>
 

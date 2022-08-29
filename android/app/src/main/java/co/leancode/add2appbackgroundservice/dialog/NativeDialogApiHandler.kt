@@ -1,4 +1,4 @@
-package co.leancode.add2appbackgroundservice
+package co.leancode.add2appbackgroundservice.dialog
 
 import android.app.Activity
 import android.util.Log

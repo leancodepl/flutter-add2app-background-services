@@ -1,6 +1,5 @@
 package co.leancode.add2appbackgroundservice
 
-import android.app.PendingIntent
 import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
@@ -8,6 +7,8 @@ import android.content.ServiceConnection
 import android.os.Build
 import android.os.IBinder
 import android.util.Log
+import co.leancode.add2appbackgroundservice.computation.ComputationForegroundService
+import co.leancode.add2appbackgroundservice.computation.ComputationServiceNotification
 import co.leancode.add2appbackgroundservice.pigeon.Api
 
 class NativeMainApiHandler(private val context: Context): Api.NativeMainApi {
