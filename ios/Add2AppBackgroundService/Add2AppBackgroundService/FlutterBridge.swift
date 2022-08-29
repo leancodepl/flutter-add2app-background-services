@@ -10,6 +10,8 @@ class FlutterBridge {
     
     public static func createFlutterViewController() -> UIViewController {
         let flutterEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngine
-        return FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
+        let viewController = FlutterViewController(engine: flutterEngine, nibName: nil, bundle: nil)
+        viewController.modalPresentationStyle = .fullScreen
+        return viewController
     }
 }
