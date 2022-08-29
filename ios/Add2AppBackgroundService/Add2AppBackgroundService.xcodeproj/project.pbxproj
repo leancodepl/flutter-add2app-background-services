@@ -1,0 +1,472 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D32C8FD3288F462900FD8495 /* FlutterBridge.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C8FD2288F462900FD8495 /* FlutterBridge.swift */; };
+		D32C8FD5288F46A400FD8495 /* ComputationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C8FD4288F46A400FD8495 /* ComputationService.swift */; };
+		D32C8FDA288F494D00FD8495 /* Api.m in Sources */ = {isa = PBXBuildFile; fileRef = D32C8FD9288F494D00FD8495 /* Api.m */; };
+		D32C8FDD288F49A100FD8495 /* NativeMainApiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32C8FDC288F49A100FD8495 /* NativeMainApiHandler.swift */; };
+		D365EAC227F11108002A3CD3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D365EAC127F11108002A3CD3 /* AppDelegate.swift */; };
+		D365EAC427F11108002A3CD3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D365EAC327F11108002A3CD3 /* SceneDelegate.swift */; };
+		D365EAC627F11108002A3CD3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D365EAC527F11108002A3CD3 /* MainViewController.swift */; };
+		D365EAC927F11108002A3CD3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D365EAC727F11108002A3CD3 /* Main.storyboard */; };
+		D365EACB27F1110A002A3CD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D365EACA27F1110A002A3CD3 /* Assets.xcassets */; };
+		D365EACE27F1110A002A3CD3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D365EACC27F1110A002A3CD3 /* LaunchScreen.storyboard */; };
+		DB624B331C163CDE4EE9569E /* Pods_Add2AppBackgroundService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B610ACCC2687B7EA53EFA483 /* Pods_Add2AppBackgroundService.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		522F888E3F6011A925686AAB /* Pods-Add2AppBackgroundService.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Add2AppBackgroundService.release.xcconfig"; path = "Target Support Files/Pods-Add2AppBackgroundService/Pods-Add2AppBackgroundService.release.xcconfig"; sourceTree = "<group>"; };
+		73C07DA6ED07465DCB265A98 /* Pods-Add2AppBackgroundService.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Add2AppBackgroundService.debug.xcconfig"; path = "Target Support Files/Pods-Add2AppBackgroundService/Pods-Add2AppBackgroundService.debug.xcconfig"; sourceTree = "<group>"; };
+		B610ACCC2687B7EA53EFA483 /* Pods_Add2AppBackgroundService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Add2AppBackgroundService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D32C8FD2288F462900FD8495 /* FlutterBridge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlutterBridge.swift; sourceTree = "<group>"; };
+		D32C8FD4288F46A400FD8495 /* ComputationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComputationService.swift; sourceTree = "<group>"; };
+		D32C8FD7288F494D00FD8495 /* Add2AppBackgroundService-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Add2AppBackgroundService-Bridging-Header.h"; sourceTree = "<group>"; };
+		D32C8FD8288F494D00FD8495 /* Api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Api.h; path = Pigeon/Api.h; sourceTree = "<group>"; };
+		D32C8FD9288F494D00FD8495 /* Api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Api.m; path = Pigeon/Api.m; sourceTree = "<group>"; };
+		D32C8FDC288F49A100FD8495 /* NativeMainApiHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeMainApiHandler.swift; sourceTree = "<group>"; };
+		D365EABE27F11108002A3CD3 /* Add2AppBackgroundService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Add2AppBackgroundService.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D365EAC127F11108002A3CD3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		D365EAC327F11108002A3CD3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		D365EAC527F11108002A3CD3 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D365EAC827F11108002A3CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D365EACA27F1110A002A3CD3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D365EACD27F1110A002A3CD3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		D365EACF27F1110A002A3CD3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D365EABB27F11108002A3CD3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DB624B331C163CDE4EE9569E /* Pods_Add2AppBackgroundService.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		33514F1E4207CF49666E2143 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B610ACCC2687B7EA53EFA483 /* Pods_Add2AppBackgroundService.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D365EAB527F11108002A3CD3 = {
+			isa = PBXGroup;
+			children = (
+				D365EAC027F11108002A3CD3 /* Add2AppBackgroundService */,
+				D365EABF27F11108002A3CD3 /* Products */,
+				E839BF7A5FDA36ECE9E953AA /* Pods */,
+				33514F1E4207CF49666E2143 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		D365EABF27F11108002A3CD3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D365EABE27F11108002A3CD3 /* Add2AppBackgroundService.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D365EAC027F11108002A3CD3 /* Add2AppBackgroundService */ = {
+			isa = PBXGroup;
+			children = (
+				D365EAC727F11108002A3CD3 /* Main.storyboard */,
+				D365EACA27F1110A002A3CD3 /* Assets.xcassets */,
+				D365EACC27F1110A002A3CD3 /* LaunchScreen.storyboard */,
+				D365EACF27F1110A002A3CD3 /* Info.plist */,
+				D365EAC127F11108002A3CD3 /* AppDelegate.swift */,
+				D365EAC327F11108002A3CD3 /* SceneDelegate.swift */,
+				D365EAC527F11108002A3CD3 /* MainViewController.swift */,
+				D32C8FD2288F462900FD8495 /* FlutterBridge.swift */,
+				D32C8FD4288F46A400FD8495 /* ComputationService.swift */,
+				D32C8FDC288F49A100FD8495 /* NativeMainApiHandler.swift */,
+				D32C8FD8288F494D00FD8495 /* Api.h */,
+				D32C8FD9288F494D00FD8495 /* Api.m */,
+				D32C8FD7288F494D00FD8495 /* Add2AppBackgroundService-Bridging-Header.h */,
+			);
+			path = Add2AppBackgroundService;
+			sourceTree = "<group>";
+		};
+		E839BF7A5FDA36ECE9E953AA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				73C07DA6ED07465DCB265A98 /* Pods-Add2AppBackgroundService.debug.xcconfig */,
+				522F888E3F6011A925686AAB /* Pods-Add2AppBackgroundService.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D365EABD27F11108002A3CD3 /* Add2AppBackgroundService */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D365EAD227F1110A002A3CD3 /* Build configuration list for PBXNativeTarget "Add2AppBackgroundService" */;
+			buildPhases = (
+				16C7F475A3B208FC2F24E778 /* [CP] Check Pods Manifest.lock */,
+				719A97EA774157395EC10BEB /* [CP-User] Run Flutter Build flutter_module Script */,
+				D365EABA27F11108002A3CD3 /* Sources */,
+				D365EABB27F11108002A3CD3 /* Frameworks */,
+				D365EABC27F11108002A3CD3 /* Resources */,
+				555F57BE69BA0B1A0634D24B /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Add2AppBackgroundService;
+			productName = Add2AppBackgroundService;
+			productReference = D365EABE27F11108002A3CD3 /* Add2AppBackgroundService.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D365EAB627F11108002A3CD3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1320;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					D365EABD27F11108002A3CD3 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
+				};
+			};
+			buildConfigurationList = D365EAB927F11108002A3CD3 /* Build configuration list for PBXProject "Add2AppBackgroundService" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D365EAB527F11108002A3CD3;
+			productRefGroup = D365EABF27F11108002A3CD3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D365EABD27F11108002A3CD3 /* Add2AppBackgroundService */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D365EABC27F11108002A3CD3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D365EACE27F1110A002A3CD3 /* LaunchScreen.storyboard in Resources */,
+				D365EACB27F1110A002A3CD3 /* Assets.xcassets in Resources */,
+				D365EAC927F11108002A3CD3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		16C7F475A3B208FC2F24E778 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Add2AppBackgroundService-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		555F57BE69BA0B1A0634D24B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Add2AppBackgroundService/Pods-Add2AppBackgroundService-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Add2AppBackgroundService/Pods-Add2AppBackgroundService-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Add2AppBackgroundService/Pods-Add2AppBackgroundService-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		719A97EA774157395EC10BEB /* [CP-User] Run Flutter Build flutter_module Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Run Flutter Build flutter_module Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../../flutter_module/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D365EABA27F11108002A3CD3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D32C8FDD288F49A100FD8495 /* NativeMainApiHandler.swift in Sources */,
+				D32C8FDA288F494D00FD8495 /* Api.m in Sources */,
+				D32C8FD5288F46A400FD8495 /* ComputationService.swift in Sources */,
+				D365EAC627F11108002A3CD3 /* MainViewController.swift in Sources */,
+				D32C8FD3288F462900FD8495 /* FlutterBridge.swift in Sources */,
+				D365EAC227F11108002A3CD3 /* AppDelegate.swift in Sources */,
+				D365EAC427F11108002A3CD3 /* SceneDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		D365EAC727F11108002A3CD3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D365EAC827F11108002A3CD3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		D365EACC27F1110A002A3CD3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D365EACD27F1110A002A3CD3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D365EAD027F1110A002A3CD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		D365EAD127F1110A002A3CD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D365EAD327F1110A002A3CD3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 73C07DA6ED07465DCB265A98 /* Pods-Add2AppBackgroundService.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BPC52W5YV3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Add2AppBackgroundService/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.leancode.add2appbackgrounservice.Add2AppBackgroundService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Add2AppBackgroundService/Add2AppBackgroundService-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D365EAD427F1110A002A3CD3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 522F888E3F6011A925686AAB /* Pods-Add2AppBackgroundService.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = BPC52W5YV3;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Add2AppBackgroundService/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = co.leancode.add2appbackgrounservice.Add2AppBackgroundService;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "Add2AppBackgroundService/Add2AppBackgroundService-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D365EAB927F11108002A3CD3 /* Build configuration list for PBXProject "Add2AppBackgroundService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D365EAD027F1110A002A3CD3 /* Debug */,
+				D365EAD127F1110A002A3CD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D365EAD227F1110A002A3CD3 /* Build configuration list for PBXNativeTarget "Add2AppBackgroundService" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D365EAD327F1110A002A3CD3 /* Debug */,
+				D365EAD427F1110A002A3CD3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D365EAB627F11108002A3CD3 /* Project object */;
+}
