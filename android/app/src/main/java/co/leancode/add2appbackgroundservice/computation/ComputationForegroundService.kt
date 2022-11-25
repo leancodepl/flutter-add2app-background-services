@@ -18,7 +18,6 @@ class ComputationForegroundService : Service() {
 
     private val binder = LocalBinder()
     private var engine: FlutterEngine? = null
-    lateinit var api: Api.FlutterMainApi
 
     override fun onBind(p0: Intent?): IBinder? = binder
 
@@ -52,7 +51,6 @@ class ComputationForegroundService : Service() {
 
         engine!!.let {
             Api.NativeBackgroundServiceApi.setup(it.dartExecutor, ComputationServiceApiHandler(this))
-            api = Api.FlutterMainApi(it.dartExecutor)
         }
     }
 
