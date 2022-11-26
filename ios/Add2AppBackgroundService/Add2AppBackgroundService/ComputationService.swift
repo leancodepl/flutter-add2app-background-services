@@ -26,7 +26,6 @@ class ComputationService: NSObject, LNCDNativeBackgroundServiceApi, LNCDNativeDi
     }
     
     func openDialogWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
-        
     }
     
     func stopServiceWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
@@ -38,7 +37,6 @@ class ComputationService: NSObject, LNCDNativeBackgroundServiceApi, LNCDNativeDi
     }
     
     func closeDialogWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
-        
     }
     
     private func startBackgroundTask() {

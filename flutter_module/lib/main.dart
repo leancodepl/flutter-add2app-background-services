@@ -34,7 +34,7 @@ void backgroundServiceMain() {
 void dialogMain() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final dialogHost = DialogIsolateHost.register();
+  DialogIsolateHost.register();
 
   final app = MaterialApp(
     title: 'Flutter Dialog',

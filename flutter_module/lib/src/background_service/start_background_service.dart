@@ -7,12 +7,6 @@ import 'package:flutter_module/src/main/main_isolate.dart';
 void startBackgroundService() {
   print('Starting background service');
 
-  ComputationNotification? notification = ComputationNotification(
-    title: 'Computation service running',
-    message: '',
-    percentProgress: 0,
-  );
-
   final mainClient = MainIsolateClient();
   final nativeServiceApi = NativeBackgroundServiceApi();
   final backgroundServiceHost =
@@ -30,9 +24,19 @@ void startBackgroundService() {
 
     remainingTicks--;
 
+    final progress = (allTicks - remainingTicks) / allTicks;
+
     mainClient.send(
       MainComputationStatusMessage(
-        progress: (allTicks - remainingTicks) / allTicks,
+        progress: progress,
+      ),
+    );
+
+    nativeServiceApi.updateNotification(
+      ComputationNotification(
+        title: 'Computation service is running',
+        message: '',
+        percentProgress: (progress * 100).round(),
       ),
     );
 
