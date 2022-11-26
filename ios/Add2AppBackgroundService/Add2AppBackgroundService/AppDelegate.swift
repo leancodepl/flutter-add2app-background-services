@@ -11,6 +11,8 @@ class AppDelegate: FlutterAppDelegate {
         flutterEngine.run()
         GeneratedPluginRegistrant.register(with: self.flutterEngine)
         
+        _ = NativeMainApiHandler(engine: flutterEngine, computationService: ComputationService())
+        
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
 }

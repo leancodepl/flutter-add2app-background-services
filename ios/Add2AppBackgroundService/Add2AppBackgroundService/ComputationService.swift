@@ -12,9 +12,11 @@ class ComputationService: NSObject, LNCDNativeBackgroundServiceApi, LNCDNativeDi
     func start(notification: LNCDComputationNotification) {
         if engine == nil {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.flutterEngineGroup.makeEngine(withEntrypoint: dartEntrypoint, libraryURI: nil)
+            engine = appDelegate.flutterEngineGroup.makeEngine(withEntrypoint: dartEntrypoint, libraryURI: nil)
+            engine!.run()
+            
+            LNCDNativeBackgroundServiceApiSetup(engine!.binaryMessenger, self)
         }
-        
         startBackgroundTask()
         lastNotification = notification
     }

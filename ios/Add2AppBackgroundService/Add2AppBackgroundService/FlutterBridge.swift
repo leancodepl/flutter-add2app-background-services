@@ -5,7 +5,6 @@ class FlutterBridge {
     private var mainEngine: FlutterEngine?
     
     public func register() {
-        
     }
     
     public static func createFlutterViewController() -> UIViewController {
