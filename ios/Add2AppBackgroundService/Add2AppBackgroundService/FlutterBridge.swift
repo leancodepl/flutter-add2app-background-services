@@ -2,7 +2,11 @@ import Foundation
 import Flutter
 
 class FlutterBridge {
-    private var mainEngine: FlutterEngine?
+    private var engineGroup: FlutterEngineGroup
+    
+    init() {
+        engineGroup = (UIApplication.shared.delegate as! AppDelegate).flutterEngineGroup
+    }
     
     public func register() {
     }

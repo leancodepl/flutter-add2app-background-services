@@ -6,6 +6,7 @@ class ComputationService: NSObject, LNCDNativeBackgroundServiceApi, LNCDNativeDi
     private let dartEntrypoint = "backgroundServiceMain"
 
     private var engine: FlutterEngine?
+    private var dialogEngine: FlutterEngine?
     private var backgroundTaskIdentifier: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
     private var lastNotification: LNCDComputationNotification?
     
@@ -28,6 +29,15 @@ class ComputationService: NSObject, LNCDNativeBackgroundServiceApi, LNCDNativeDi
     }
     
     func openDialogWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
+        dialogEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngineGroup.makeEngine(withEntrypoint: "dialogMain", libraryURI: nil)
+        let vc = FlutterViewController(engine: dialogEngine!, nibName: nil, bundle: nil)
+        vc.modalPresentationStyle = .fullScreen
+        
+        guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
+            return
+        }
+        rootViewController.dismiss(animated: false, completion: nil)
+        rootViewController.present(vc, animated: true, completion: nil)
     }
     
     func stopServiceWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
@@ -39,6 +49,8 @@ class ComputationService: NSObject, LNCDNativeBackgroundServiceApi, LNCDNativeDi
     }
     
     func closeDialogWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
+        dialogEngine?.destroyContext()
+        dialogEngine = nil
     }
     
     private func startBackgroundTask() {
