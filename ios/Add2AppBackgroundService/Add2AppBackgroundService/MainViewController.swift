@@ -7,7 +7,7 @@ class MainViewController: UIViewController {
     }
 
     @IBAction func onOpenFlutterScreen(_ sender: Any) {
-        let viewController = FlutterBridge.createFlutterViewController()
-        present(viewController, animated: true, completion: nil)
+        let vc = (UIApplication.shared.delegate as! AppDelegate).flutterBridge.createFlutterViewController(engine: .main)
+        present(vc, animated: true, completion: nil)
     }    
 }

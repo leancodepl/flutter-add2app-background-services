@@ -3,36 +3,33 @@ import Flutter
 
 class ComputationService: NSObject, LNCDNativeBackgroundServiceApi, LNCDNativeDialogApi {
     private let backgroundTaskName = "computatationBackgroundTask"
-    private let dartEntrypoint = "backgroundServiceMain"
 
     private var engine: FlutterEngine?
-    private var dialogEngine: FlutterEngine?
     private var backgroundTaskIdentifier: UIBackgroundTaskIdentifier = UIBackgroundTaskIdentifier.invalid
-    private var lastNotification: LNCDComputationNotification?
+    private let flutterBridge: FlutterBridge
+    
+    init(flutterBridge: FlutterBridge) {
+        self.flutterBridge = flutterBridge
+    }
     
     func start(notification: LNCDComputationNotification) {
-        if engine == nil {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            engine = appDelegate.flutterEngineGroup.makeEngine(withEntrypoint: dartEntrypoint, libraryURI: nil)
-            engine!.run()
+        let engine = flutterBridge.createOrGetEngine(engine: .computationService)
+        engine.run()
             
-            LNCDNativeBackgroundServiceApiSetup(engine!.binaryMessenger, self)
-        }
+        LNCDNativeBackgroundServiceApiSetup(engine.binaryMessenger, self)
         startBackgroundTask()
-        lastNotification = notification
     }
     
     func stop() {
         stopBackgroundTask()
-        engine?.destroyContext()
-        engine = nil
+        flutterBridge.destroyEngine(engine: .computationService)
     }
     
     func openDialogWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
-        dialogEngine = (UIApplication.shared.delegate as! AppDelegate).flutterEngineGroup.makeEngine(withEntrypoint: "dialogMain", libraryURI: nil)
-        let vc = FlutterViewController(engine: dialogEngine!, nibName: nil, bundle: nil)
-        vc.modalPresentationStyle = .fullScreen
+        let dialogEngine = flutterBridge.createOrGetEngine(engine: .dialog)
+        dialogEngine.run()
         
+        let vc = flutterBridge.createFlutterViewController(engine: .dialog)
         guard let rootViewController = (UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate)?.window?.rootViewController else {
             return
         }
@@ -45,12 +42,11 @@ class ComputationService: NSObject, LNCDNativeBackgroundServiceApi, LNCDNativeDi
     }
 
     func updateNotificationNotification(_ notification: LNCDComputationNotification, error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
-        
+        // Not used on iOS, you could show a local notification here
     }
     
     func closeDialogWithError(_ error: AutoreleasingUnsafeMutablePointer<FlutterError?>) {
-        dialogEngine?.destroyContext()
-        dialogEngine = nil
+        flutterBridge.destroyEngine(engine: .dialog)
     }
     
     private func startBackgroundTask() {
