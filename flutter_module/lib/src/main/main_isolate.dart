@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:isolate';
 
 import 'package:flutter_module/src/common/isolates/isolate_client.dart';
@@ -5,6 +6,14 @@ import 'package:flutter_module/src/common/isolates/isolate_host.dart';
 import 'package:flutter_module/src/common/isolates/register_isolate.dart';
 
 const _isolateName = 'mainIsolate';
+
+class A {
+  StreamSubscription? _subscriptionA;
+
+  void init(Stream stream) {
+    _subscriptionA = stream.listen((_) {});
+  }
+}
 
 abstract class MainIsolateMessage {}
 
